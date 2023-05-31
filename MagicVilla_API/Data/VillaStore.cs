@@ -7,7 +7,7 @@ namespace MagicVilla_API.Data
         // Test list of data
         public static List<VillaDto> villaList = new List<VillaDto>
         {
-            new VillaDto { 
+            new VillaDto {
                 Id              = 1,
                 Name            = "Test 001",
                 Occupants       = 4,

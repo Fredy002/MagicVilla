@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MagicVilla_API.Models
@@ -27,8 +26,8 @@ namespace MagicVilla_API.Models
 
         public string Amenity { get; set; }
 
-        public DateTime CreationDate { get; set; }
+        public DateTime DateCreated { get; set; }
 
-        public DateTime CreationTime { get; set; }
+        public DateTime DateUpdated { get; set; }
     }
 }

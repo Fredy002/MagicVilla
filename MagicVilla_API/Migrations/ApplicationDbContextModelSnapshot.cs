@@ -22,6 +22,31 @@ namespace MagicVilla_API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("MagicVilla_API.Models.NumberVilla", b =>
+                {
+                    b.Property<int>("VillaNumber")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateUdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SpecialDetail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VillaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("VillaNumber");
+
+                    b.HasIndex("VillaId");
+
+                    b.ToTable("NumberVilla");
+                });
+
             modelBuilder.Entity("MagicVilla_API.Models.Villa", b =>
                 {
                     b.Property<int>("Id")
@@ -70,8 +95,8 @@ namespace MagicVilla_API.Migrations
                         {
                             Id = 1,
                             Amenity = "Pool",
-                            CreationDate = new DateTime(2023, 5, 26, 12, 42, 16, 489, DateTimeKind.Local).AddTicks(1967),
-                            CreationTime = new DateTime(2023, 5, 26, 12, 42, 16, 489, DateTimeKind.Local).AddTicks(1981),
+                            CreationDate = new DateTime(2023, 5, 31, 16, 9, 54, 784, DateTimeKind.Local).AddTicks(6196),
+                            CreationTime = new DateTime(2023, 5, 31, 16, 9, 54, 784, DateTimeKind.Local).AddTicks(6207),
                             Description = "Villa Fredy is a beautiful villa with a private pool, located in the heart of the Algarve, in the Vale de Parra area, just 5 minutes drive from the beach.",
                             ImageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAFskFyZTRMZ9ATpIAD9hYIsOl53hb4joVYv5T5YMcdL0gPsF0NGDsmI8opsHGoGb71Kw",
                             Name = "Villa Fredy",
@@ -83,8 +108,8 @@ namespace MagicVilla_API.Migrations
                         {
                             Id = 2,
                             Amenity = "Pool",
-                            CreationDate = new DateTime(2023, 5, 26, 12, 42, 16, 489, DateTimeKind.Local).AddTicks(1983),
-                            CreationTime = new DateTime(2023, 5, 26, 12, 42, 16, 489, DateTimeKind.Local).AddTicks(1984),
+                            CreationDate = new DateTime(2023, 5, 31, 16, 9, 54, 784, DateTimeKind.Local).AddTicks(6209),
+                            CreationTime = new DateTime(2023, 5, 31, 16, 9, 54, 784, DateTimeKind.Local).AddTicks(6210),
                             Description = "Villa Maria is a beautiful villa with a private pool, located in the heart of the Algarve, in the Vale de Parra area, just 5 minutes drive from the beach.",
                             ImageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR-VVajuXehgQBdHgR3_J4rk_PuiLJVrmJdGnjAsE8I5Kw3dhbsTxxbWnJHhzxaaT11mk",
                             Name = "Villa Maria",
@@ -96,8 +121,8 @@ namespace MagicVilla_API.Migrations
                         {
                             Id = 3,
                             Amenity = "Pool",
-                            CreationDate = new DateTime(2023, 5, 26, 12, 42, 16, 489, DateTimeKind.Local).AddTicks(1986),
-                            CreationTime = new DateTime(2023, 5, 26, 12, 42, 16, 489, DateTimeKind.Local).AddTicks(1987),
+                            CreationDate = new DateTime(2023, 5, 31, 16, 9, 54, 784, DateTimeKind.Local).AddTicks(6211),
+                            CreationTime = new DateTime(2023, 5, 31, 16, 9, 54, 784, DateTimeKind.Local).AddTicks(6212),
                             Description = "Villa Jack is a beautiful villa with a private pool, located in the heart of the Algarve, in the Vale de Parra area, just 5 minutes drive from the beach.",
                             ImageURL = "https://www.engelvoelkers.com/images/ba6a064e-2c80-4df7-9e75-586392b76a3c/exclusiva-villa-rodeada-de-naturaleza",
                             Name = "Villa Jack",
@@ -105,6 +130,17 @@ namespace MagicVilla_API.Migrations
                             Rate = 10.0,
                             SquareMeters = 200.0
                         });
+                });
+
+            modelBuilder.Entity("MagicVilla_API.Models.NumberVilla", b =>
+                {
+                    b.HasOne("MagicVilla_API.Models.Villa", "Villa")
+                        .WithMany()
+                        .HasForeignKey("VillaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Villa");
                 });
 #pragma warning restore 612, 618
         }
